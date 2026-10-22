@@ -1,308 +1,133 @@
-# AI Engineering Company Project — Student Template
+# Welcome to HealthCore
 
-[![4Geeks Academy](https://img.shields.io/badge/4Geeks-Academy-blue)](https://4geeksacademy.com)
-[![AI Engineering](https://img.shields.io/badge/track-AI%20Engineering-green)](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
-
-_Base template for transversal projects in the AI Engineering Career Program — 4Geeks Academy._
-
-_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+## AI Engineering · 4Geeks Academy — Company Briefing
 
 ---
 
-## Purpose
+HealthCore is an outpatient healthcare services company founded in 2011 in Austin, Texas. It operates a network of **12 clinics** — 9 in the United States (Texas, Florida, and Georgia) and 3 in the United Kingdom (London and Manchester) — offering primary care, specialist consultations, chronic disease management, and preventive health programmes. The company employs approximately **200 people** across clinical staff, operations, administration, and a growing technology unit. Annual revenue sits around **28 million dollars**.
 
-This repository is the **starter template** for transversal projects. You will work on real company scenarios (Brasaland, TrackFlow, Nexova), building deliverables that map to course milestones (Web, Programming, Backend, Telemetry, RAG, Agents, Workflows, Real-time).
+HealthCore was built on a simple idea: accessible, high-quality care that doesn't require patients to wait weeks for an appointment or navigate a confusing system. Same-day bookings, extended hours, and bilingual staff in US markets became the brand's signature. For most of its history, that was enough to grow steadily and earn a loyal patient base in both countries.
 
-- Create a template from this repository.
-- Replace the placeholder `CONTEXT.md` with your assigned company context.
-- Use `skills/` and the directory-level `README.md` files as working guidance.
+It is no longer enough.
 
----
+## How the company is organised
 
-## How to start
+HealthCore is led by **Dr. Sandra Okonkwo**, a physician who spent years inside large hospital systems before founding the company out of frustration with how much time clinicians spent on administration instead of patients. She is precise, evidence-driven, and deeply sceptical of technology that doesn't solve a real problem — but she has come to understand that without modern systems, HealthCore cannot manage what it has already built, let alone grow further.
 
-1. **Use this repository as a template** and create your own project repo.
-2. **Clone** your repository (or open it in Codespaces).
-3. **Replace** `CONTEXT.md` with the full context for your assigned company.
-4. **Read this folder guide** and open the `README.md` of the folder you are working in.
-5. **Start implementing** in the right folder — do not dump everything in the root.
-6. **Document** what you add: each new app, service, agent, or pipeline gets a subfolder + README.
+The company is organised around the following areas:
 
----
+**Clinical Operations** is where the medicine happens. Dr. Marcus Reid oversees approximately 120 clinical staff — physicians, nurse practitioners, nurses, and medical assistants — across the 12 locations. Each clinic operates somewhat independently, with its own processes and its own patient records system. The US and UK clinics use different electronic health record platforms, and they do not speak to each other.
 
-## How to think about this monorepo
+**Patient Experience and Access** manages everything that happens before and after the clinical encounter: booking appointments, reminding patients, handling follow-up, and making sure the patient has a smooth journey from first contact to discharge. Priya Nair leads this function from London, and she is acutely aware that a 22% no-show rate across the network represents both a patient failure and a significant financial loss.
 
-You are building **one company** across many milestones and projects. Each top-level folder has a **single responsibility** — like a real engineering team repo.
+**Revenue Cycle and Billing** is responsible for getting paid for the care that HealthCore provides. In the US, that means navigating commercial insurance, Medicare, and Medicaid — a complex claims and reimbursement process where a 14% denial rate (more than double the industry average) is currently costing the company significant money. In the UK, billing is a mix of private pay and a small NHS contract. Tom Callahan manages both revenue streams, but without a unified view of either.
 
-| Layer               | Folders                           | What lives here                                                  |
-| ------------------- | --------------------------------- | ---------------------------------------------------------------- |
-| **Company context** | `CONTEXT.md`                      | Domain facts, field names, constraints for your assigned company |
-| **User-facing**     | `uis/`, `services/`               | Frontends and backends users (or operators) interact with        |
-| **Data**            | `data/`                           | Raw files, pipelines, processed datasets, evaluation sets        |
-| **AI**              | `agents/`, `skills/`, `mcps/`     | Agents, reusable agent capabilities, MCP tool servers            |
-| **Automation**      | `workflows/`                      | n8n flows and cross-system orchestration                         |
-| **Reuse**           | `packages/`, `shared/`            | Shared types, SDKs, schemas, templates                           |
-| **Operations**      | `infra/`, `scripts/`, `internal/` | Docker, deploy configs, one-off scripts, internal CLIs           |
-| **Documentation**   | `docs/`                           | Architecture, decisions, conventions for the whole repo          |
+**Compliance and Data Governance** is what keeps HealthCore legally safe. Claire Whitfield manages the company's obligations under HIPAA in the US and UK GDPR in the United Kingdom — two different frameworks with different rules about how patient data can be stored, accessed, and shared. Any system that HealthCore builds or adopts must be evaluated through this lens. Claire's team is small, but her authority in the organisation is significant.
 
-**Rule of thumb:** if it has a UI → `uis/`. If it exposes an API or runs in the background → `services/`. If it moves or transforms data → `data/`. If an AI model does the work → `agents/` (+ `skills/` or `mcps/` as needed).
+**People and Workforce** handles the 200 employees across 12 locations in two countries, each with different employment law frameworks. Diane Foster manages everything from hiring — clinical roles are hard to fill and take an average of 47 days to close — to onboarding, compliance training, and tracking the continuing medical education hours that clinicians are legally required to complete to maintain their licences.
 
----
+**Technology** is the team that has been tasked with making all of this work. James Osei, the CTO, leads six people in Austin. They are responsible for a patchwork of legacy systems that were each built or acquired to solve a specific problem and have never been properly integrated. Two different EHR systems. A US billing platform. A UK billing spreadsheet. A phone-based US scheduling system. A manual diary for UK bookings. No shared data layer between any of them.
 
-## Current status of the template
+**Executive Leadership** centres on Dr. Okonkwo, who receives weekly reports from each department head — all formatted differently, sometimes contradictory, and always based on data that is several days old. She is managing a 28-million-dollar, two-country clinical network without being able to answer a basic question like "what is our no-show rate across the network this week?" without making phone calls.
 
-> 💡 This repository currently provides a **base folder structure and documentation skeleton** only. It does not include runnable apps or global scripts yet.
->
-> - `CONTEXT.md` is a placeholder and must be replaced with your assigned company context.
-> - There is no root `AGENTS.md` yet.
-> - Shared package metadata exists in `packages/shared/package.json` (`@repo/shared-types`), but no workspace runner is configured at root.
+## Where the company stands today
+
+HealthCore has built something genuinely valuable: a network of clinics that patients trust and clinical staff want to work in. But the infrastructure underneath the clinical work has not kept pace with the company's growth. The consequences range from inconvenient to serious.
+
+Patients in the US book by phone while patients in the UK call a front desk — there is no shared online booking system. A fifth of patients do not show up to their appointments, and no proactive outreach system exists to prevent it. Clinical staff spend 35 minutes a day on documentation tasks that AI could assist with. Billing denials cost millions annually. Compliance training is tracked on a spreadsheet. Patient data flows through systems that were never designed to share information.
+
+Operating in healthcare adds a layer of responsibility that does not exist in other industries. Patient data is protected by law — HIPAA in the US, UK GDPR in the UK. Every system that handles that data must meet specific legal standards. Errors are not just inefficiencies; in healthcare, they can have consequences for real patients.
+
+Dr. Okonkwo has created an internal unit called **HealthCore Digital** to build the systems, workflows, and intelligent tools that will allow the company to operate as a modern healthcare provider — safe, efficient, and genuinely centred on the patient.
+
+**You are part of that unit.**
 
 ---
 
-## Folder guide — what goes where
+## The Departments and Their Problems
 
-Read the linked `README.md` inside each folder before you start coding there.
+### 🏥 Clinical Operations
 
-### Root files
+**Director:** Dr. Marcus Reid (~120 clinical staff across 12 locations)
 
-| Path                         | Purpose                                                                   | What you do here                                                                                              |
-| ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [`CONTEXT.md`](./CONTEXT.md) | Single source of truth for your company (Brasaland, TrackFlow, or Nexova) | **First step:** copy your assigned company briefing here so every app, agent, and prompt uses the same domain |
-| `docker-compose.yml`         | Local dev orchestration for the whole stack                               | Keep at repo root — wires `services/`, databases, and other containers from one place                         |
-| `README.md` / `README.es.md` | This guide                                                                | Orientation — you are here                                                                                    |
+Each of the 12 clinics operates with its own processes and patient records system. US clinics use one EHR platform, UK clinics use another, and they cannot communicate with each other. Clinical staff spend 35 minutes per day on documentation tasks that could be assisted by AI. When a patient moves between locations or crosses the US-UK boundary, their history does not follow them.
 
-### `uis/` — user interfaces
-
-**Purpose:** All frontend applications — anything a human sees and clicks.
-
-**Put here:**
-
-- Public website (`website/`)
-- Internal admin / backoffice (`backoffice/`)
-- Customer portals, loyalty apps, Streamlit/Gradio tools, dashboards with a UI
-
-**Examples:** corporate landing page, operations backoffice, loyalty portal, telemetry dashboard UI
-
-→ See [`uis/README.md`](./uis/README.md)
-
-### `services/` — centralized company API (FastAPI)
-
-**Purpose:** One **centralized FastAPI backend** for the whole company — a single entry point that keeps complexity low as the project grows.
-
-**Put here:**
-
-- One main FastAPI app (e.g. `api/`) with routers/modules per domain (locations, menus, sales, telemetry, etc.)
-- Background workers only when they truly need to run separately from the API
-
-**Recommendation:** avoid splitting into many microservices early. Add endpoints to the same FastAPI app; extract a worker only when necessary.
-
-**Examples:** `/locations`, `/menus`, `/sales/reports`, webhook handlers, scheduled jobs
-
-→ See [`services/README.md`](./services/README.md)
-
-### `data/` — datasets, pipelines, and evaluation
-
-**Purpose:** Everything data-related, from raw files to production-ready tables.
-
-| Subfolder                                       | Purpose                      | What you do here                                                          |
-| ----------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
-| [`data/raw/`](./data/raw/README.md)             | Untouched source data        | Store dumps, exports, sample CSVs/JSON — document origin and PII rules    |
-| [`data/pipelines/`](./data/pipelines/README.md) | ETL/ELT jobs                 | Write ingestion, cleaning, and transformation scripts                     |
-| [`data/process/`](./data/process/README.md)     | Clean / intermediate outputs | Save artifacts produced by pipelines (features, aggregates, clean tables) |
-| [`data/eval/`](./data/eval/README.md)           | Quality measurement          | Golden sets, RAG/agent eval datasets, experiment metrics                  |
-
-**Flow:** `raw` → `pipelines` → `process` → consumed by `services/`, `uis/`, or `agents/`. Use `eval` to prove quality.
-
-### `agents/` — AI agents
-
-**Purpose:** Autonomous or semi-autonomous AI assistants for the company.
-
-**Put here:**
-
-- One subfolder per agent (e.g. `support-agent/`, `onboarding-agent/`)
-- Agent config, prompts, tools wiring, tests
-- Start from [`agents/_template/`](./agents/_template/README.md) when creating a new agent
-
-**Examples:** customer support bot, employee onboarding copilot, training assistant
-
-→ See [`agents/README.md`](./agents/README.md)
-
-### `skills/` — reusable agent capabilities
-
-**Purpose:** Packaged instructions + scripts that agents (or you in Cursor) reuse across the repo.
-
-**Put here:**
-
-- Skills for data analysis, code review, scraping, research, etc.
-- Each skill = a folder with `SKILL.md`, optional scripts and resources
-
-**Example included:** `skills/data-analysis/` (pandas cleaning script + metrics reference)
-
-→ See [`skills/README.md`](./skills/README.md)
-
-### `mcps/` — Model Context Protocol servers
-
-**Purpose:** Bridge AI models to your systems — databases, APIs, GitHub, custom tools.
-
-**Put here:**
-
-- One subfolder per MCP server (e.g. `database-mcp/`, `github-mcp/`)
-- Tool definitions, resources, and server config
-
-**When to use:** when an agent needs live access to data or actions your codebase alone cannot provide
-
-→ See [`mcps/README.md`](./mcps/README.md)
-
-### `workflows/` — automation and orchestration
-
-**Purpose:** Connect systems without writing full apps — scheduled jobs, webhooks, notifications.
-
-**Put here:**
-
-- n8n workflow exports, Make/Zapier configs, or orchestration docs
-- Flows that link `services/`, `data/pipelines/`, and `agents/`
-
-**Examples:** new-order → Slack alert, nightly ETL trigger, lead → CRM sync
-
-→ See [`workflows/README.md`](./workflows/README.md)
-
-### `packages/` — shared libraries
-
-**Purpose:** Versionable code reused by multiple apps, agents, or pipelines.
-
-**Put here:**
-
-- Shared TypeScript types (`packages/shared/` → `@repo/shared-types`)
-- UI component libraries, API clients, analytics SDKs
-
-**Rule:** if `uis/` and `services/` both need the same interface → extract it here
-
-→ See [`packages/README.md`](./packages/README.md)
-
-### `shared/` — loose shared assets
-
-**Purpose:** Resources that are not a full package — schemas, templates, static assets, short docs.
-
-**Put here:**
-
-- JSON schemas, email templates, OpenAPI specs, design tokens
-- Anything reused but too small or non-code for `packages/`
-
-→ See [`shared/README.md`](./shared/README.md)
-
-### `docs/` — cross-cutting documentation
-
-**Purpose:** Architecture and decisions that span the whole company project.
-
-**Put here:**
-
-- System architecture diagrams, ADRs, security/observability guides
-- Conventions not tied to one app or agent
-
-→ See [`docs/README.md`](./docs/README.md)
-
-### `infra/` — infrastructure and deployment
-
-**Purpose:** How the company project runs in Docker, cloud, or CI.
-
-**Put here:**
-
-- Dockerfiles, Terraform, K8s manifests, Nginx configs, CI/CD pipelines
-
-**Keep at repo root:** `docker-compose.yml` — orchestrates local dev for `services/`, databases, and other containers from one place.
-
-→ See [`infra/README.md`](./infra/README.md)
-
-### `scripts/` — helper scripts
-
-**Purpose:** Small, repeatable automation — not full apps.
-
-**Put here:**
-
-- Setup scripts, seed data generators, lint wrappers, one-off migrations
-- Document each script: what it does, args, and how to run it
-
-**Difference from `internal/`:** scripts are usually single files; `internal/` tools are structured projects with their own deps and tests.
-
-→ See [`scripts/README.md`](./scripts/README.md)
-
-### `internal/` — internal developer tools
-
-**Purpose:** Robust utilities for the engineering team.
-
-**Put here:**
-
-- CLIs, packaged migration tools, prompt evaluators
-- Tools with their own `package.json`, tests, and install steps
-
-→ See [`internal/README.md`](./internal/README.md)
+**What they need:** A unified patient record API that surfaces data from both EHR systems, AI-assisted clinical documentation to reduce administrative time, cross-location patient history visibility, and a clinical operations dashboard showing appointment volume, patient flow, and documentation time by location.
 
 ---
 
-## Where should I put this?
+### 🗓️ Patient Experience and Access
 
-Quick decision guide:
+**Manager:** Priya Nair (London)
 
-```text
-Does it have buttons and screens?          → uis/
-Does it run on a server / API / queue?     → services/
-Is it raw or transformed data?             → data/raw/ or data/process/
-Does it move data between systems?         → data/pipelines/
-Do you measure AI/pipeline quality?        → data/eval/
-Is it an AI assistant with a goal?         → agents/
-Is it a reusable AI capability/instruction?→ skills/
-Does AI need to call external tools/APIs?  → mcps/
-Is it n8n / scheduled automation?          → workflows/
-Will 2+ folders import the same code?      → packages/
-Is it a schema/template/asset, not a lib?  → shared/
-Is it architecture or team-wide docs?      → docs/
-Is it docker-compose for local dev?        → repo root
-Is it Docker / deploy / cloud config?      → infra/
-Is it a one-off script?                    → scripts/
-Is it a CLI tool with its own package?     → internal/
-```
+Patients in the US book appointments by phone. Patients in the UK call a front desk. There is no shared online booking system. A 22% no-show rate across the network represents both poor patient experience and significant financial loss — approximately $1.8 million annually in lost appointment slots. No proactive outreach system exists to remind patients or reschedule at-risk appointments.
+
+**What they need:** A unified online booking platform for both markets, an intelligent appointment reminder system with SMS/email/app notifications, a no-show prediction model that flags high-risk appointments for proactive contact, and a patient experience dashboard tracking booking rates, no-shows, and patient satisfaction by location.
 
 ---
 
-## Repository structure (tree)
+### 💰 Revenue Cycle and Billing
 
-```text
-ai-engineering-company-project-monorepo/
-├── README.md / README.es.md   # This guide
-├── CONTEXT.md                 # ← Replace with your company briefing
-├── docker-compose.yml         # ← Local dev orchestration (repo root)
-├── uis/                       # Frontends (website, backoffice, dashboards)
-├── services/                  # Centralized FastAPI company API
-├── data/
-│   ├── raw/                   # Source datasets
-│   ├── pipelines/             # ETL/ELT jobs
-│   ├── process/               # Clean / intermediate outputs
-│   └── eval/                  # Evaluation sets and metrics
-├── agents/                    # AI agents (+ _template/ starter)
-├── skills/                    # Reusable agent skills
-├── mcps/                      # MCP servers for tool access
-├── workflows/                 # n8n and automation flows
-├── packages/                  # Shared libraries (@repo/shared-types, …)
-├── shared/                    # Schemas, templates, loose assets
-├── docs/                      # Architecture and cross-cutting docs
-├── infra/                     # Docker, Terraform, deployment
-├── scripts/                   # Helper scripts
-└── internal/                  # Internal CLIs and dev tools
-```
+**Manager:** Tom Callahan
+
+In the US, a 14% claims denial rate — more than double the industry average of 5-8% — is costing HealthCore significant revenue. Claims are submitted manually with inconsistent coding practices across locations. In the UK, billing is split between private pay and a small NHS contract, managed separately with no unified view. Tom cannot answer "what is our collection rate this month?" without making phone calls.
+
+**What they need:** An AI-assisted claims review system that flags high-risk submissions before they go out, automated coding suggestions based on clinical notes, a unified billing dashboard showing US and UK revenue streams in real time, denial pattern analysis to identify systematic issues, and automated follow-up workflows for denied or unpaid claims.
 
 ---
 
-## Links
+### 🔒 Compliance and Data Governance
 
-- [4Geeks Academy — AI Engineering](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
-- [How to start a coding project](https://4geeks.com/lesson/how-to-start-a-project)
+**Manager:** Claire Whitfield
+
+HealthCore operates under two different legal frameworks: HIPAA in the United States and UK GDPR in the United Kingdom. Every system that handles patient data must be evaluated through both lenses. Data access logs are maintained separately in each EHR system. Audit trails are incomplete. When a patient requests their data under GDPR or HIPAA, compiling it requires manual work across multiple systems.
+
+**What they need:** A centralised compliance monitoring dashboard showing data access patterns across both jurisdictions, automated audit trail consolidation, a patient data request automation tool that compiles records from all systems, and a compliance risk scoring system that flags potential violations before they become breaches.
 
 ---
 
-## Contributors
+### 👥 People and Workforce
 
-This template was built as part of the 4Geeks Academy AI Engineering Career Program by [@marcogonzalo](https://www.linkedin.com/in/marcogonzalo) and [@alesanchezr](https://x.com/alesanchezr) and many other contributors. Find out more about our [AI Engineering Course](https://4geeksacademy.com/en/career-programs/ai-engineering), and [other courses](https://4geeksacademy.com/en/program-comparison).
+**Manager:** Diane Foster
 
-You can find other templates and resources like this at the [4Geeks Academy GitHub page](https://github.com/4geeksacademy).
+Managing 200 employees across 12 locations in two countries, each with different employment law frameworks, creates significant overhead. Clinical roles are hard to fill and take an average of 47 days to close — nearly 20 days longer than industry benchmarks. Onboarding is manual. Continuing medical education (CME) hours, which clinicians are legally required to track to maintain their licences, are recorded on a spreadsheet.
 
-_This template is maintained by 4Geeks Academy for the AI Engineering track. For exclusive use in the programme._
+**What they need:** An internal HR portal for holiday requests, absence management, and policy queries, an automated clinical onboarding flow with credential verification checklists, a CME tracking system with automatic expiry alerts, an HR KPI dashboard tracking time-to-hire, turnover, and absenteeism by location and role, and an HR chatbot that answers common employee questions.
+
+---
+
+### 💻 Technology
+
+**CTO:** James Osei (6-person team in Austin)
+
+HealthCore's technology estate is a patchwork of systems acquired or built over a decade: two different EHR platforms, a US billing system, a UK billing spreadsheet, a phone-based US scheduling system, and manual diaries for UK bookings. There is no shared data layer. No telemetry. No centralised logging. When a system fails, the team finds out when a clinic calls to report it.
+
+**What they need:** A HealthCore central API that unifies patient, appointment, billing, and staff data across both EHR systems, real-time telemetry and monitoring from all 12 locations, a data pipeline feeding clinical, operations, and finance dashboards, automated health checks with alerts, and technical documentation indexed for semantic search.
+
+---
+
+### 📊 Executive Leadership
+
+**CEO:** Dr. Sandra Okonkwo
+
+Dr. Okonkwo manages a 28-million-dollar healthcare network across two countries without a unified dashboard. Her decisions are based on weekly reports from each department head — all formatted differently, sometimes contradictory, and always several days old. She cannot answer basic operational questions like "what is our no-show rate this week?" or "which location has the highest claims denial rate this month?" without making phone calls.
+
+**What she needs:** A unified executive dashboard with real-time KPIs from all departments (appointment volume, no-show rate, claims denial rate, revenue by location, patient satisfaction), an automatically generated weekly report delivered every Monday at 7am, threshold alerts for critical metrics, and a natural-language AI assistant she can query directly.
+
+---
+
+## Why Choose HealthCore?
+
+Choose HealthCore if you are drawn to:
+
+- **Healthcare and regulated data** — building systems that handle protected health information under HIPAA and UK GDPR, where errors have legal consequences and privacy is non-negotiable.
+- **Cross-border healthcare operations** — two countries, two regulatory frameworks, two EHR systems, and a unified patient experience that must work across all of it.
+- **High-stakes AI applications** — clinical documentation assistance, claims denial prediction, and appointment no-show forecasting are not optional enhancements; they directly impact patient care and company viability.
+- **Systems that serve real patients** — every dashboard, API, and automation you build exists to help people get the healthcare they need, when they need it, without unnecessary friction.
+
+The AI challenges at HealthCore include natural language processing of clinical notes for billing code suggestions, predictive models for appointment no-shows trained on multi-location data, RAG systems over compliance documentation in two jurisdictions, and intelligent scheduling that balances patient preferences with clinic capacity. If you want to build systems where technical excellence directly translates to better healthcare delivery, HealthCore is your company.
+
+---
+
+_Internal document — 4Geeks Academy · AI Engineering Track_
+_For exclusive use in programme project generation_
