@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Application Form | HealthCore</title>
+
+  <meta name="description"
+      content="Contact HealthCore about primary care, specialist consultations, chronic disease management, and preventive outpatient healthcare services.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="validation.js" defer></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-slate-200">
+    <nav class="max-w-5xl mx-auto px-6 py-5
+                flex flex-wrap justify-between items-center gap-4"
+         aria-label="Main navigation">
+
+      <a href="index.html"
+         class="text-2xl font-bold text-teal-700">
+        HealthCore
+      </a>
+
+      <a href="index.html"
+         class="text-teal-700 font-medium hover:underline">
+        Back to Home
+      </a>
+
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-14">
+
+    <section class="bg-white shadow-sm rounded-2xl
+                    border border-slate-200 p-6 md:p-10">
+
+      <h1 class="text-3xl font-bold mb-4">
+        HealthCore Inquiry Form
+      </h1>
+ 
+<p class="text-slate-600 mb-8">
+  Use this demonstration form to make a general
+  inquiry about HealthCore's outpatient services.
+  Fields marked with an asterisk (*) are required.
+  Please do not include medical or other sensitive
+  personal information.
+</p>
+
+      <form id="applicationForm" novalidate>
+
+        <fieldset class="space-y-6">
+          <legend class="text-xl font-semibold mb-6">
+            Personal Information
+          </legend>
+
+          <!-- FULL NAME -->
+          <div>
+            <label for="fullName"
+                   class="block font-medium mb-2">
+              Full Name *
+            </label>
+
+            <input type="text"
+                   id="fullName"
+                   name="fullName"
+                   autocomplete="name"
+                   required
+                   minlength="2"
+                   aria-describedby="fullNameError"
+                   class="w-full border border-slate-300
+                          rounded-lg px-4 py-3
+                          focus:outline-none
+                          focus:ring-2 focus:ring-teal-600">
+
+            <p id="fullNameError"
+               class="text-red-700 text-sm mt-2"
+               aria-live="polite"></p>
+          </div>
+
+          <!-- EMAIL -->
+          <div>
+            <label for="email"
+                   class="block font-medium mb-2">
+              Email Address *
+            </label>
+
+            <input type="email"
+                   id="email"
+                   name="email"
+                   autocomplete="email"
+                   required
+                   aria-describedby="emailError"
+                   class="w-full border border-slate-300
+                          rounded-lg px-4 py-3
+                          focus:outline-none
+                          focus:ring-2 focus:ring-teal-600">
+
+            <p id="emailError"
+               class="text-red-700 text-sm mt-2"
+               aria-live="polite"></p>
+          </div>
+
+          <!-- PHONE -->
+          <div>
+            <label for="phone"
+                   class="block font-medium mb-2">
+              Phone Number *
+            </label>
+
+            <input type="tel"
+                   id="phone"
+                   name="phone"
+                   autocomplete="tel"
+                   placeholder="Example: 505-555-1234"
+                   required
+                   aria-describedby="phoneError"
+                   class="w-full border border-slate-300
+                          rounded-lg px-4 py-3
+                          focus:outline-none
+                          focus:ring-2 focus:ring-teal-600">
+
+            <p id="phoneError"
+               class="text-red-700 text-sm mt-2"
+               aria-live="polite"></p>
+          </div>
+
+          <!-- STATE -->
+          <div>
+            <label for="state"
+                   class="block font-medium mb-2">
+              State of Residence *
+            </label>
+
+            <select id="state"
+                    name="state"
+                    required
+                    aria-describedby="stateError"
+                    class="w-full border border-slate-300
+                           rounded-lg px-4 py-3
+                           focus:outline-none
+                           focus:ring-2 focus:ring-teal-600">
+
+              <option value="" disabled>Select a state</option>
+              <option value="AZ">Arizona</option>
+              <option value="CA">California</option>
+              <option value="FL">Florida</option>
+              <option value="NM">New Mexico</option>
+              <option value="TX">Texas</option>
+
+            </select>
+
+            <p id="stateError"
+               class="text-red-700 text-sm mt-2"
+               aria-live="polite"></p>
+          </div>
+        </fieldset>
+
+        <!-- INQUIRY -->
+        <fieldset class="mt-10">
+          <legend class="text-xl font-semibold mb-6">
+            Inquiry Details
+          </legend>
+
+          <div>
+            
+<p id="messageHelp"
+   class="text-sm text-slate-600 mb-3">
+  Describe your general inquiry only.
+  Do not enter symptoms, diagnoses,
+  medical records, or sensitive information.
+</p>
+
+            <textarea id="message"
+                      name="message"
+                      rows="5"
+                      minlength="10"
+                      required
+                      aria-describedby="messageHelp messageError"
+                      class="w-full border border-slate-300
+                             rounded-lg px-4 py-3
+                             focus:outline-none
+                             focus:ring-2 focus:ring-teal-600"></textarea>
+
+            <p id="messageError"
+               class="text-red-700 text-sm mt-2"
+               aria-live="polite"></p>
+          </div>
+        </fieldset>
+
+        <!-- BUTTONS -->
+        <div class="flex flex-wrap gap-4 mt-10">
+
+          <button type="submit"
+                  class="bg-teal-700 text-white
+                         px-7 py-3 rounded-lg
+                         font-semibold hover:bg-teal-800
+                         focus-visible:outline
+                         focus-visible:outline-2
+                         focus-visible:outline-offset-2
+                         focus-visible:outline-teal-700">
+            Submit Inquiry
+          </button>
+
+          <button type="reset"
+                  class="bg-slate-200 text-slate-800
+                         px-7 py-3 rounded-lg
+                         font-semibold hover:bg-slate-300">
+            Clear Form
+          </button>
+
+        </div>
+
+        <!-- FORM STATUS -->
+        <p id="formStatus"
+           role="status"
+           aria-live="polite"
+           class="mt-6 font-medium"
+           tabindex="-1"></p>
+
+      </form>
+
+      <p class="mt-8 text-sm text-slate-500">
+        This is a demonstration form.
+        Information is validated in your browser
+        but is not transmitted or stored.
+        Do not enter medical or other sensitive information.
+      </p>
+
+    </section>
+  </main>
+
+  <footer class="text-center text-slate-500 text-sm py-8">
+    &copy; 2026 HealthCore. All rights reserved.
+  </footer>
+
+</body>
+</html>
