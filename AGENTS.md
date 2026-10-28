@@ -19,7 +19,7 @@ read these files in order:
 4. memory-bank/progress.md
 5. Relevant README.md files
 6. Applicable repository-specific instructions and any scoped rules that exist
-7. Relevant SKILL.md files under skills/ when using a repository skill
+7. Relevant SKILL.md files under skills/ or .agents/skills/ when using a repository skill
 
 If required context is missing or contradictory,
 stop and ask the developer for clarification.
