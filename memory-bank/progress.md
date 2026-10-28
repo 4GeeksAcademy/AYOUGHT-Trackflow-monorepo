@@ -19,6 +19,7 @@ AI agent infrastructure setup and website prototype.
 - Place project progress under `memory-bank/` as required by the repository instructions.
 - Align the inquiry form's service locations and phone validation with its US and UK audience.
 - Correct the Spanish docs heading and document the `.agents/skills/` location.
+- Cross-check the company-selection document against `BRIEFING.md` and label proposed workflows separately from documented facts.
 
 ## In Progress
 
